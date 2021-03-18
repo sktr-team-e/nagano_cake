@@ -6,19 +6,9 @@
       </div>
       <div class="col-xs-10 col-xs-offset-1">
         <% @products.each do |product| %>
-
-            <!--Topページと部分テンプレートできそう-->
-      <%= link_to customers_product_path(product.id), class: "btn-link", :style=>"color:#0099FF;" do %>
-      <div id="img_field" class="product">
-        <%= attachment_image_tag(product, :image, size: "180x130", fallback: "no_image.jpg") %>
-      </div>
-      <p class="products-name">
-        <%= product.name %>
-      </p>
-      <% end %>
-
-
-
+  　　　  　　<!--部分テンプレート始まり-->
+          <%= render "product_each", product: product %>
+          <!--部分テンプレート終わり-->
         <% end %>
       <div class="text-center"><%= paginate @products %></div>
   </div>
