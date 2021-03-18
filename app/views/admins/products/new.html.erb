@@ -1,2 +1,27 @@
-<h1>Admins::Products#new</h1>
-<p>Find me in app/views/admins/products/new.html.erb</p>
+<div>
+  <p>商品新規登録</p>
+</div>
+
+<%= form_with model: @product, url:'/admins/products', local:true do |f| %>
+
+  <p>商品画像</p>
+  <%= f.text_field :image_id %>
+
+  <p>商品名</p>
+  <%= f.text_field :name %>
+
+  <p>商品説明</p>
+  <%= f.text_area :introduction %>
+
+  <p>ジャンル</p>
+  <%= f.text_field :category_id %>
+
+  <p>税抜価格</p>
+  <%= f.text_field :nontax_price %>
+
+  <p>販売ステータス</p>
+
+  <%= f.submit %>
+
+
+<% end %>
