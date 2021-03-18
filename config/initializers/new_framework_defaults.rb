@@ -21,9 +21,13 @@ Rails.application.config.active_record.belongs_to_required_by_default = true
 <<<<<<< HEAD
 #ActiveSupport.halt_callback_chains_on_return_false = false
 =======
+<<<<<<< HEAD
+#ActiveSupport.halt_callback_chains_on_return_false = false
+=======
 
 # ActiveSupport.halt_callback_chains_on_return_false = false
 >>>>>>> 0ba832aa891f4a27a7ebdcaae2bce2dccafd3b32
+>>>>>>> 9d47040c2d41a16ed4a689abc599f4fdddc7be13
 
 # Configure SSL options to enable HSTS with subdomains. Previous versions had false.
 Rails.application.config.ssl_options = { hsts: { subdomains: true } }
