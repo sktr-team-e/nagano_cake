@@ -1,11 +1,15 @@
-<div class="container">
+<div class="container"><br>
   <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
-      <h2 class="product-headline head-line title_h2 text-center">
-        商品一覧
-        <span>(全<!--@products.count追加％で囲む-->件)</span>
-      </h2>
-
-    </div>
+    <h2><strong>商品一覧</strong></h2>
+      <div class="d-flex align-items-end">
+        <h4>（全<%= @products.count %>件）</h4>
+      </div>
+      <div class="col-xs-10 col-xs-offset-1">
+        <% @products.each do |product| %>
+  　　　  　　<!--部分テンプレート始まり-->
+          <%= render "product_each", product: product %>
+          <!--部分テンプレート終わり-->
+        <% end %>
+      <div class="text-center"><%= paginate @products %></div>
   </div>
 </div>
