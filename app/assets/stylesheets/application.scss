@@ -15,12 +15,31 @@
  */
 @import "bootstrap";
 
-<<<<<<< HEAD
 * {
     margin: 0;
     padding: 0;
-=======
-.about {
-  text-align:center
->>>>>>> 9d47040c2d41a16ed4a689abc599f4fdddc7be13
 }
+
+.about {
+  text-align: center;
+}
+
+.example {
+  position: relative;
+  }
+
+.example p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  /*文字の装飾は省略*/
+  }
+
+.example img {
+  width: 50%;
+  }

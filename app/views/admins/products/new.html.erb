@@ -4,23 +4,24 @@
 
 <%= form_with model: @product, url:'/admins/products', local:true do |f| %>
 
-  <p>商品画像</p>
+  <%= f.label :"商品画像" %>
   <%= f.text_field :image_id %>
-
-  <p>商品名</p>
+<br>
+  <%= f.label :"商品名" %>
   <%= f.text_field :name %>
-
-  <p>商品説明</p>
+<br>
+  <%= f.label :"商品説明" %>
   <%= f.text_area :introduction %>
-
-  <p>ジャンル</p>
+<br>
+  <%= f.label :"ジャンル" %>
   <%= f.text_field :category_id %>
-
-  <p>税抜価格</p>
+<br>
+  <%= f.label :"税抜価格" %>
   <%= f.text_field :nontax_price %>
-
-  <p>販売ステータス</p>
-
+<br>
+  <%= f.label :"販売ステータス" %>
+  <%= f.check_box :is_active %>
+<br>
   <%= f.submit %>
 
 

@@ -1,13 +1,22 @@
 class Customers::ProductsController < ApplicationController
   def top
+    @products = Product.all
   end
 
   def about
   end
 
-  def index
+  def index   #ページネート１ページに８件まで表示
+    @products = Product.page(params[:page]).per(8)
   end
 
   def show
   end
+
+
+
+	private
+	def product_params
+		parmas.require(:product).permit(:name, :introduction, :nontaxed_price, :image_id, :is_active)
+	end
 end
