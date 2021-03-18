@@ -1,24 +1,21 @@
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12">
-      <%= image_tag 'ケーキ.jpeg' %>
-			<p>
-				ようこそ、ながのCAKEへ!<br>
-				このサイトは、ケーキ販売のECサイトになります。<br>
-				会員でない方も商品の閲覧はできますが、<br>
-				購入には会員登録が必要になります。<br>
-			</p>
-		</div>
-
-		<h1>新着商品</h1>
-		<!-- 新着のケーキ4つ表示-->
-			<% @products.first(5). each do |product| %>
-			  <%= render "product_each", product: product %>
-			<% end %>
-			<div class="col-xs-12">
-			<%= link_to "全ての商品を見る", products_path, class: "btn-link  pull-right" %>
-			</div>
-		</div>
-
+<div class="text-center">
+	<div class="example">
+		<%= image_tag 'ケーキ.jpeg' %>
+		<p>
+			ようこそ、ながのCAKEへ!<br>
+			このサイトは、ケーキ販売のECサイトになります。<br>
+			会員でない方も商品の閲覧はできますが、<br>
+			購入には会員登録が必要になります。<br>
+		</p>
 	</div>
+</div>
+
+<h1>新着商品</h1>
+<!-- 新着のケーキ4つ表示させる-->
+<% @products.first(5). each do |product| %>
+<!--ここにrenderを挿入-->
+<% end %>
+
+<div class="text-right">
+	<%= link_to "全ての商品を見る", customers_products_path, class: "btn-link  pull-right" %>
 </div>
