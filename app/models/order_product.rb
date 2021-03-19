@@ -1,7 +1,7 @@
 class OrderProduct < ApplicationRecord
 
-  #order とのアソシエーションを追加する
+  belongs_to :order
 
-  #product とのアソシエーションを追加する
+  belongs_to :product
 
 end

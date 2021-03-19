@@ -1,10 +1,11 @@
 class Product < ApplicationRecord
   attachment :image
-  
+
   belongs_to :category
-  
-  # order_product 注文商品のアソシエーション追加する
-  
+
+  has_many :orders
+  has_many :order_products, through: :orders
+
   # cart_product カート内商品のアソシエーションを追加する
-  
+
 end
