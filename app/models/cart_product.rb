@@ -1,6 +1,7 @@
 class CartProduct < ApplicationRecord
-  
-  #customer とのアソシエーションを追加する
-  
-  #product とのアソシエーションを追加する
+  belongs_to :product
+	belongs_to :customer
+
+	validates :customer_id, :product_id, :amount, presence: true
+	validates :amount, numericality: { only_integer: true }
 end
