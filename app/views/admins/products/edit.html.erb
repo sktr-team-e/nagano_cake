@@ -1,2 +1,28 @@
-<h1>Admins::Products#edit</h1>
-<p>Find me in app/views/admins/products/edit.html.erb</p>
+<div>
+  <p>商品編集画面</p>
+</div>
+
+<%= form_with model: @product,  local:true do |f| %>
+
+  <%= f.label :"商品画像" %>
+  <%= f.attachment_field :image %>
+<br>
+  <%= f.label :"商品名" %>
+  <%= f.text_field :name %>
+<br>
+  <%= f.label :"商品説明" %>
+  <%= f.text_area :introduction %>
+<br>
+  <%= f.label :"ジャンル" %>
+  <%= f.text_field :category_id %>
+<br>
+  <%= f.label :"税抜価格" %>
+  <%= f.text_field :nontaxed_price %>
+<br>
+  <%= f.label :"販売ステータス" %>
+  <%= f.check_box :is_active %>
+<br>
+  <%= f.submit '保存' %>
+
+
+<% end %>
