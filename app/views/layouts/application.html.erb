@@ -16,20 +16,13 @@
         <a class="navbar-brand" href="#">LOGO</a>
          <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
+                
             　　<!---会員がログインしている時-->
                 <% if customer_signed_in? %>
-              　<li class="nav-item active">
-                    <a class="nav-link" href="#">マイページ</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">商品一覧</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">カート</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">ログアウト</a>
-                </li>
+              　<%= link_to 'マイページ', customers_customer_path(current_customer), class: "btn text-light" %>
+              　<%= link_to '商品一覧',  customers_products_path, class: "btn text-light" %>
+              　<%= link_to 'カート', customers_cart_products_path, class: "btn text-light" %>
+              　<%= link_to 'ログアウト', destroy_customer_session_path, method: :delete , class: "btn text-light"%>
                 <!--管理者がログインしている時-->
                 <% elsif admin_signed_in?%>
                 <li class="nav-item active">
@@ -49,18 +42,11 @@
                 </li>
                 <!--ログインしていない時-->
                 <% else %>
-                 <li class="nav-item active">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">商品一覧</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">新規登録</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">ログイン</a>
-                </li>
+                 <%= link_to 'About',   customers_about_path, class: "btn text-light" %>
+            　   <%= link_to '商品一覧',  customers_products_path, class: "btn text-light" %>
+            　    <%= link_to '新規登録',  new_customer_registration_path, class: "btn text-light" %>
+                 <%= link_to 'ログイン', new_customer_session_path, class: "btn text-light" %>
+
             　  <% end %>
             </ul>
         </div>
