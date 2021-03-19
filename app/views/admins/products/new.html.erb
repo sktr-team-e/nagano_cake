@@ -5,7 +5,7 @@
 <%= form_with model: @product, url:'/admins/products', local:true do |f| %>
 
   <%= f.label :"商品画像" %>
-  <%= f.text_field :image_id %>
+  <%= f.attachment_field :image %>
 <br>
   <%= f.label :"商品名" %>
   <%= f.text_field :name %>
@@ -17,12 +17,12 @@
   <%= f.text_field :category_id %>
 <br>
   <%= f.label :"税抜価格" %>
-  <%= f.text_field :nontax_price %>
+  <%= f.text_field :nontaxed_price %>
 <br>
   <%= f.label :"販売ステータス" %>
   <%= f.check_box :is_active %>
 <br>
-  <%= f.submit %>
+  <%= f.submit '新規登録' %>
 
 
 <% end %>
