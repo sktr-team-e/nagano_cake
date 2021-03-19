@@ -1,4 +1,9 @@
-<h1>Customers::Products#show</h1>
-<p>Find me in app/views/customers/products/show.html.erb</p>
-<p>test</p>
-<p>test2</p>
+
+<h4><%= @product.name %></h4>
+<p><%= @product.introduction %></p>
+<p><b>￥<%= @product.nontaxed_price %></b>(税込)</p>
+
+ <%= form_with model: @cart_products, url: "/customers/cart_products", local: true do |f| %>
+   <%= f.select :amount, {'1個': 1, '2個': 2, '3個': 3, '4個': 4, '5個': 5}, {include_blank: '個数選択'}, {required: true} %>
+   <%= f.submit 'カートに入れる' %>
+ <% end %>
