@@ -18,7 +18,7 @@ class Customers::CartProductsController < ApplicationController
   end
 
   def create
-    @cart_product = current_customer.cart_products.new(params_cart_product)
+    @cart_product = current_customer.cart_product.new(params_cart_product)
 
     @update_cart_product =  CartProduct.find_by(product: @cart_product.product)
     if @update_cart_product.present? && @cart_product.valid?
