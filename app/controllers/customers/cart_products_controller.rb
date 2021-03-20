@@ -53,7 +53,7 @@ class Customers::CartProductsController < ApplicationController
     @cart_products = current_customer.cart_products
     @cart_products.destroy_all
     flash[:alert] = "カートの商品を全て削除しました"
-    redirect_to customers_cart_items_path
+    redirect_to customers_cart_products_path
   end
 
   def params_cart_product
