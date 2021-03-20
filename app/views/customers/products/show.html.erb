@@ -1,4 +1,4 @@
-
+<%= attachment_image_tag(@product, :image, size: "220x170", fallback: "no_image.jpg") %>
 <h4><%= @product.name %></h4>
 <p><%= @product.introduction %></p>
 <p><b>￥<%= @product.nontaxed_price %></b>(税込)</p>
