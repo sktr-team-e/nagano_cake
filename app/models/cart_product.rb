@@ -1,6 +1,7 @@
 class CartProduct < ApplicationRecord
-  
-  #customer とのアソシエーションを追加する
-  
-  #product とのアソシエーションを追加する
+
+  belongs_to :customer
+
+  belongs_to :products
+
 end

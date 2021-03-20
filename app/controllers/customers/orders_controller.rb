@@ -1,10 +1,10 @@
 class Customers::OrdersController < ApplicationController
   def new
     @order = Order.new
-    @addresses = Address.where(customer: current_customer)
   end
 
   def log
+
   end
 
   def create

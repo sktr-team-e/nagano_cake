@@ -6,6 +6,6 @@ class Product < ApplicationRecord
   has_many :orders
   has_many :order_products, through: :orders
 
-  # cart_product カート内商品のアソシエーションを追加する
+  has_many :cart_products
 
 end

@@ -1,17 +1,8 @@
-<div class="container">
+<div class="container"><br>
   <div class="row">
     <div class="col-xs-12">
-      <h2 class="background-color: #a9a9a9; text-align: center;">注文情報入力</h2>
-      <% if current_customer.cart_products.present? %><!--カート内に商品があれば-->
+      <h3 style="width: 300px;background-color: #e6e6e6; text-align: center;">注文情報入力</h3>
 
-
-
-
-
-      <% else %><!--カート内に商品がなければ-->
-        <p>お客様のショッピングカートに商品はありませんので注文情報の入力ができません。</p>
-        <p><%= link_to "商品一覧", products_path, class: "btn btn-warning" %>から商品をお探し下さい。</p>
-      <% end %>
     </div>
   </div>
 </div>
