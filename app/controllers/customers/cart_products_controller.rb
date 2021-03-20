@@ -5,7 +5,7 @@ class Customers::CartProductsController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @cart_products = current_cart
+    @cart_products = current_cart.cart_products
   end
 
   def update
@@ -18,7 +18,7 @@ class Customers::CartProductsController < ApplicationController
   end
 
   def create
-    @cart_product = current_customer.cart_product.new(params_cart_product)
+    @cart_product = current_customer.cart_products.new(params_cart_product)
 
     @update_cart_product =  CartProduct.find_by(product: @cart_product.product)
     if @update_cart_product.present? && @cart_product.valid?
@@ -53,7 +53,7 @@ class Customers::CartProductsController < ApplicationController
     @cart_products = current_customer.cart_products
     @cart_products.destroy_all
     flash[:alert] = "カートの商品を全て削除しました"
-    redirect_to customers_cart_items_path
+    redirect_to customers_cart_products_path
   end
 
   def params_cart_product
