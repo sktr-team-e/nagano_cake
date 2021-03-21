@@ -9,6 +9,7 @@ class Customers::CartProductsController < ApplicationController
   end
 
   def update
+    @cart_products = CartProduct.find(params[:id])
 
   end
 
@@ -20,16 +21,25 @@ class Customers::CartProductsController < ApplicationController
   end
 
   def destroy
-
+    @cart_products = CartProduct.find(params[:id])
+    @cart_products.destroy
+    redirect_to customers_cart_products_path
   end
 
   def all_destroy
-
+    @cart_products = current_customer.cart_products
+    @cart_products.destroy_all
+    redirect_to customers_cart_products_path
   end
 
   private
   def params_cart_product
     params.require(:cart_product).permit(:amount, :product_id)
   end
+
+  protected
+    def set_cart_product
+      @cart_product = CartProduct.find(params[:id])
+    end
 
 end
