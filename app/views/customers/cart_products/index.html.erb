@@ -1,7 +1,7 @@
 <h2>ショッピングカート</h2>
 
 <div class="pull-right margin-bottom text-right">
-  <%= link_to " カートを空にする", customers_cart_products_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: "glyphicon glyphicon-trash btn btn-danger" %>
+  <%= link_to " カートを空にする", customers_cart_products_all_destroy_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: "glyphicon glyphicon-trash btn btn-danger_#{@cart_products}"%>
 </div>
 <br>
 
@@ -25,7 +25,7 @@
             <%= attachment_image_tag(cart_product.product, :image, size:"30x30", fallback: "no_image.jpg") %>
             <%= cart_product.product.name %>
           </td>
-          <td><%= cart_product.product.nontaxed_price %></td><!--税込価格挿入-->
+          <td><%= cart_product.product.nontaxed_price * 1.10.floor(1).to_f %></td><!--税込価格挿入-->
           <td>
             <%= form_with model: cart_product, url: customers_cart_product_path(cart_product.id), local: true do |f| %>
               <%= f.number_field :amount,:value => cart_product.amount, min:1,max:5 %>
@@ -34,7 +34,7 @@
           </td>
 
           <td></td><!--小計が出るように挿入-->
-          <td><%= link_to '削除する', customers_cart_products_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_cart_product_#{@cart_products}"%></td>
+          <td><%= link_to '削除する', customers_cart_product_path(cart_product.id), method: :delete, data: { confirm: '本当に消しますか？' } %></td>
         </tr>
         <% end %>
       </tbody>
@@ -52,6 +52,7 @@
           <tr>
             <td class="warning">合計金額</td>
             <td class="text-right" id='total_price'>
+              CartProduct.all.sum(:price)
               <!--合計金額が出るように挿入する-->
             </td>
           </tr>
