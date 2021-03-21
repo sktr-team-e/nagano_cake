@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   attachment :image
 
-  belongs_to :category
+  belongs_to :category, optional: true
 
   has_many :orders
   has_many :order_products, through: :orders
