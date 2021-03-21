@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get 'cart_products/all_destroy' => 'cart_products#all_destroy'
     resources :products, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update]
-    get 'customers/quit' => 'customers#quit'
+    get '/quit' => 'customers#quit'
     get 'customers/out' => 'customers#out'
   end
 
