@@ -1,7 +1,7 @@
 class Customers::OrdersController < ApplicationController
   def new
-    @order = Order.new  # ⬇︎(条件)にマッチしたレコードだけを選択
-  	@addresses = Address.where(current_customer)
+    @order = Order.new
+
   end
 
   def log
