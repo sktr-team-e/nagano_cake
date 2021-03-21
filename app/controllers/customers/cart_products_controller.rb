@@ -5,7 +5,7 @@ class Customers::CartProductsController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @cart_products = CartProduct.all
+    @cart_products = current_customer.cart_products.all
   end
 
   def update
@@ -29,7 +29,7 @@ class Customers::CartProductsController < ApplicationController
 
   private
   def params_cart_product
-    params.require(:cart_product).permit(:amount, :product_id, :customer_id)
+    params.require(:cart_product).permit(:amount, :product_id)
   end
 
 end

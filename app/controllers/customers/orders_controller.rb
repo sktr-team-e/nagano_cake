@@ -1,6 +1,7 @@
 class Customers::OrdersController < ApplicationController
   def new
-    @order = Order.new
+    @order = Order.new  # ⬇︎(条件)にマッチしたレコードだけを選択
+  	@addresses = Address.where(current_customer)
   end
 
   def log
@@ -8,6 +9,17 @@ class Customers::OrdersController < ApplicationController
   end
 
   def create
+   # カート商品の注文商品への移行(下２行)
+    @order = current_customer.orders.new(order_params)
+    @order.save
+    redirect_to customers_orders_thanx_path
+
+   # カート商品の情報を注文商品に移動(カート機能で保存された商品を一括決済)
+
+
+   # 注文完了後、カート商品を空にする
+    @cart_products.destroy_all
+
   end
 
   def thanx
