@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :orders, only: [:new, :index, :show, :create]
     get 'customers/orders/log' => 'orders#log'
-    get 'orders/thanx' => 'orders#thanx'
+    get 'customers/orders/thanx' => 'orders#thanx'
     resources :cart_products, only: [:index, :update, :create, :destroy]
     get 'cart_products/all_destroy' => 'cart_products#all_destroy'
     resources :products, only: [:index, :show]
