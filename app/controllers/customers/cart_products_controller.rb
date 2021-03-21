@@ -29,7 +29,7 @@ class Customers::CartProductsController < ApplicationController
 
   private
   def params_cart_product
-    params.require(:cart_product).permit(:amount, :product_id, :customer_id)
+    params.require(:cart_product).permit(:amount, :product_id)
   end
 
 end
