@@ -2,7 +2,40 @@
   <div class="row">
     <div class="col-xs-12">
       <h3 style="width: 300px;background-color: #e6e6e6; text-align: center;">注文情報確認</h3>
+      <% if current_customer.cart_products.present? %> <!--カート内に商品があれば-->
+        <table class="able table-hover table-inverse table-bordered">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_products.each do |cart| %>
+          <tr>
+            <tb><%= cart.products.name %></tb>
+            <tb></tb>
+            <tb></tb>
+            <tb></tb>
+          </tr>
+          <% end %>
+        </tbody>
 
+
+
+        </table>
+
+
+
+
+
+
+      <% else %><!-- if カート内に商品がなければ -->
+        <p>お客様のショッピングカートに商品はありませんので注文確定ができません。</p>
+        <p><%= link_to "商品一覧", customers_products_path, class: "btn btn-info" %> から商品をお探し下さい。</p>
+      <% end %>
     </div>
   </div>
 </div>
