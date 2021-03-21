@@ -22,18 +22,18 @@
         <% @cart_products.each do |cart_product| %>
         <tr>
           <td>
-            <!--イメージタグを挿入する-->
+            <%= attachment_image_tag(cart_product.product, :image, size:"30x30", fallback: "no_image.jpg") %>
             <%= cart_product.product.name %>
           </td>
-          <td></td>
-            <!--＃単価（税込）挿入-->
+          <td><%= cart_product.product.nontaxed_price %></td><!--税込価格挿入-->
           <td>
-            <%= cart_product.amount %>
-
+            <%= form_with model: cart_product, url: customers_cart_product_path(cart_product.id), local: true do |f| %>
+              <%= f.number_field :amount,:value => cart_product.amount, min:1,max:5 %>
+              <%= f.submit "変更"%>
+            <% end %>
           </td>
 
-          <td></td>
-            <!--小計が出るように挿入-->
+          <td></td><!--小計が出るように挿入-->
           <td><%= link_to '削除する', customers_cart_products_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_cart_product_#{@cart_products}"%></td>
         </tr>
         <% end %>
