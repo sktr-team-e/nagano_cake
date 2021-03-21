@@ -1,7 +1,9 @@
 class CartProduct < ApplicationRecord
+  belongs_to :product
+	belongs_to :customer
 
-  belongs_to :customer
 
-  belongs_to :products
+	validates :customer_id, :product_id, :amount, presence: true
+	validates :amount, numericality: { only_integer: true }
 
 end

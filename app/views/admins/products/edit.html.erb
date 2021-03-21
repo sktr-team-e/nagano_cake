@@ -1,5 +1,5 @@
 <div>
-  <p>商品編集画面</p>
+  <h3>商品編集画面</h3>
 </div>
 
 <%= form_with model: @product, url:"/admins/products/#{params[:id]}", local:true do |f| %>
@@ -22,7 +22,7 @@
   <%= f.label :"販売ステータス" %>
   <%= f.check_box :is_active %>
 <br>
-  <%= f.submit '保存' %>
+  <%= f.submit '保存', class: "btn btn-success" %>
 
 
 <% end %>

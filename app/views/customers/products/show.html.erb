@@ -1,9 +1,18 @@
+<div class="customers-show-box">
 
-<h4><%= @product.name %></h4>
-<p><%= @product.introduction %></p>
-<p><b>￥<%= @product.nontaxed_price %></b>(税込)</p>
+<div class="customers-show-image">
+  <%= attachment_image_tag(@product, :image, size: "220x170", fallback: "no_image.jpg") %>
+</div>
+<div class="customers-show-text-box">
+  <h4><%= @product.name %></h4>
+  <p><%= @product.introduction %></p>
+  <p class="including_tax_price"><b>￥<%= @product.nontaxed_price %></b>(税込)</p>
 
  <%= form_with model: @cart_products, url: "/customers/cart_products", local: true do |f| %>
+   <%= f.hidden_field :product_id, value: @product.id %>
    <%= f.select :amount, {'1個': 1, '2個': 2, '3個': 3, '4個': 4, '5個': 5}, {include_blank: '個数選択'}, {required: true} %>
    <%= f.submit 'カートに入れる' %>
  <% end %>
+</div>
+
+</div>
