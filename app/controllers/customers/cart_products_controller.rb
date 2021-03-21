@@ -5,7 +5,7 @@ class Customers::CartProductsController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @cart_products = CartProduct.all
+    @cart_products = current_customer.cart_products.all
   end
 
   def update
