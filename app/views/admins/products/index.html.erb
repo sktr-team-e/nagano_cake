@@ -14,14 +14,18 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <th><%= product.id %></th>
-        <th><%= product.name %></th>
-        <th><%= product.nontaxed_price %></th>
-        <th>test</th>
+        <td><%= product.id %></td>
+        <td>
+          <%= link_to admins_product_path(product.id) do %>
+            <%= product.name %>
+          <% end %>
+        </td>
+        <td><%= product.nontaxed_price %></td>
+        <td>test</td>
         <% if product.is_active == true %>
-          <th>販売中</th>
+          <td>販売中</td>
         <% else %>
-          <th>販売停止中</th>
+          <td>販売停止中</td>
         <% end %>
       </tr>
 
