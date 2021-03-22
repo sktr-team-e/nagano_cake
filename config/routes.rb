@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :index, :show, :create]
     get 'customers/orders/log' => 'orders#log'
     get 'customers/orders/thanx' => 'orders#thanx'
+    delete 'cart_products/all_destroy' => 'cart_products#all_destroy'
     resources :cart_products, only: [:index, :update, :create, :destroy]
-    get 'cart_products/all_destroy' => 'cart_products#all_destroy'
     resources :products, only: [:index, :show]
     resource :customers, only: [:show, :edit, :update]
     get '/quit' => 'customers#quit'
