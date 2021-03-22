@@ -18,10 +18,8 @@
 * {
     margin: 0;
     padding: 0;
-<<<<<<< HEAD
-=======
+
     box-sizing: border-box;
->>>>>>> 53daa595f2215ae3146589e4b2be5ef3ea907def
 }
 
 .about {
@@ -34,11 +32,12 @@
 
 .example p {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
+  top: 70%;
+  left: 0;
+  right: 0;
+  // -ms-transform: translate(-50%,-50%);
+  // -webkit-transform: translate(-50%,-50%);
+  // transform: translate(-50%,-50%);
   margin:0;
   padding:0;
   /*文字の装飾は省略*/
