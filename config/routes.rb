@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   devise_for :models
 
-  namespace :customers do
+  scope module: :customers do
     root 'products#top'
     get '/about' => 'products#about'
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
