@@ -6,7 +6,7 @@ class Customers::OrdersController < ApplicationController
 
   def log
     @cart_products = current_customer.cart_products
-    @order = Order.new(                                    #new演算子
+    @order = Order.new(
       customer: current_customer,
       payment_method: params[:order][:payment_method]
     )
@@ -47,8 +47,8 @@ class Customers::OrdersController < ApplicationController
     OrderProduct.create(
       product:  cart_product.product,
       order:    @order,
-      amount: cart_product.amount,
-    # including_tax_price: including_tax_price(cart_product)
+      amount:   cart_product.amount,
+      #including_tax_price: including_tax_price(cart_product)
     )
     end
 
