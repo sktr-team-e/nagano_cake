@@ -20,7 +20,7 @@
 <!--お届け先-->
            <h3><strong>お届け先</h3></strong>
            <div class="col-xs-10 radio">
-            <%= f.radio_button :addresses, "addresses", checked: true  %>
+            <%= f.radio_button :addresses, "residence", checked: true  %>
             <span>&nbsp;ご自身の住所</span><br>
             &emsp;&emsp;〒<%= "#{current_customer.postcode} #{current_customer.address}" %>
             <br>
