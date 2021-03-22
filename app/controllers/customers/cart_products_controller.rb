@@ -8,7 +8,9 @@ class Customers::CartProductsController < ApplicationController
   end
 
   def update
-
+    @cart_products = CartProduct.find(params[:id])
+    @cart_products.update(amount: params[:amount].to.i)
+    redirect_to cart_products_path
   end
 
   def create
@@ -29,13 +31,13 @@ class Customers::CartProductsController < ApplicationController
   def destroy
     @cart_product = CartProduct.find(params[:id])
     @cart_product.destroy
-    redirect_to customers_cart_products_path
+    redirect_to cart_products_path
   end
 
   def all_destroy
     @cart_products = current_customer.cart_products
     @cart_products.destroy_all
-    redirect_to customers_cart_products_path
+    redirect_to cart_products_path
   end
 
   private
