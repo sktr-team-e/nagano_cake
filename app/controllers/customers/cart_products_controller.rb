@@ -8,7 +8,9 @@ class Customers::CartProductsController < ApplicationController
   end
 
   def update
-
+    @cart_products = CartProduct.find(params[:id])
+    @cart_products.update(amount: params[:amount].to.i)
+    redirect_to customers_cart_products_path
   end
 
   def create
