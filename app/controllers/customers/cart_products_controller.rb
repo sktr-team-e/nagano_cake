@@ -1,7 +1,6 @@
 class Customers::CartProductsController < ApplicationController
   include ApplicationHelper
 
-  before_action :set_cart_product, only: [:update, :destroy]
   before_action :authenticate_customer!
 
   def index
@@ -21,8 +20,8 @@ class Customers::CartProductsController < ApplicationController
   end
 
   def destroy
-    @cart_products = CartProduct.find(params[:id])
-    @cart_products.destroy
+    @cart_product = CartProduct.find(params[:id])
+    @cart_product.destroy
     redirect_to customers_cart_products_path
   end
 
@@ -36,10 +35,5 @@ class Customers::CartProductsController < ApplicationController
   def params_cart_product
     params.require(:cart_product).permit(:amount, :product_id)
   end
-
-  protected
-    def set_cart_product
-      @cart_product = CartProduct.find(params[:id])
-    end
 
 end
