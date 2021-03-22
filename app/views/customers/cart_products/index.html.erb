@@ -29,7 +29,7 @@
           <td>
             <%= form_with model: cart_product, url: customers_cart_product_path(cart_product.id), local: true do |f| %>
               <%= f.number_field :amount,:value => cart_product.amount, min:1,max:5 %>
-              <%= f.submit "変更"%>
+              <%= f.submit "変更", class: "glyphicon glyphicon-pencil btn btn-success" %>
             <% end %>
           </td>
 
