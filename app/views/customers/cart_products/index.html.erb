@@ -1,7 +1,7 @@
 <h2>ショッピングカート</h2>
 
 <div class="pull-right margin-bottom text-right">
-  <%= link_to " カートを空にする", cart_products_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: "glyphicon glyphicon-trash btn btn-danger" %>
+  <%= link_to " カートを空にする", cart_products_all_destroy_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: "glyphicon glyphicon-trash btn btn-danger" %>
 </div>
 <br>
 
@@ -34,7 +34,7 @@
           </td>
 
           <td></td><!--小計が出るように挿入-->
-          <td><%= link_to '削除する', cart_products_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_cart_product_#{@cart_products}"%></td>
+          <td><%= link_to '削除する', cart_product_path(cart_product.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_cart_product_#{@cart_products}"%></td>
         </tr>
         <% end %>
       </tbody>
