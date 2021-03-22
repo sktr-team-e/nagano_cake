@@ -16,7 +16,7 @@ class Customers::CartProductsController < ApplicationController
     @cart_products = CartProduct.new(params_cart_product)
     @cart_products.customer_id = current_customer.id
     @cart_products.save
-    redirect_to customers_cart_products_path
+    redirect_to cart_products_path
   end
 
   def destroy

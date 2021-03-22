@@ -1,4 +1,4 @@
-   <%= link_to customers_product_path(product.id), class: "btn-link", :style=>"color:#0999FF;" do %>
+   <%= link_to product_path(product.id), class: "btn-link", :style=>"color:#0999FF;" do %>
      <%= attachment_image_tag(@product, :image, size: "220x170", fallback: "no_image.jpg") %>
      <h6><%= product.name %></h6>
    <% end %>
