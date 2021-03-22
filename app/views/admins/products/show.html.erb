@@ -1,2 +1,21 @@
-<h1>Admins::Products#show</h1>
-<p>Find me in app/views/admins/products/show.html.erb</p>
+<div class="show-box">
+
+<h2>商品詳細 -Admin-</h2>
+
+<div class="show-image">
+  <%= attachment_image_tag(@product, :image, size: "220x170", fallback: "no_image.jpg") %>
+</div>
+
+<div class="show-text">
+  <h4><%= @product.name %></h4>
+  <p><%= @product.introduction %></p>
+  <p><b>￥<%= @product.nontaxed_price %></b>(税込)</p>
+
+</div>
+
+  <div>
+    <%= link_to edit_admins_product_path(params[:id]) do %>
+      <button type="button" class="btn btn-success">編集する</button>
+    <% end %>
+  </div>
+</div>
