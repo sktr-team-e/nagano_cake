@@ -19,9 +19,9 @@
                 
             　　<!---会員がログインしている時-->
                 <% if customer_signed_in? %>
-              　<%= link_to 'マイページ', customers_customer_path(current_customer), class: "btn text-light" %>
-              　<%= link_to '商品一覧',  customers_products_path, class: "btn text-light" %>
-              　<%= link_to 'カート', customers_cart_products_path, class: "btn text-light" %>
+              　<%= link_to 'マイページ', customers_path, class: "btn text-light" %>
+              　<%= link_to '商品一覧',  products_path, class: "btn text-light" %>
+              　<%= link_to 'カート', cart_products_path, class: "btn text-light" %>
               　<%= link_to 'ログアウト', destroy_customer_session_path, method: :delete , class: "btn text-light"%>
                 <!--管理者がログインしている時-->
                 <% elsif admin_signed_in?%>
@@ -42,8 +42,8 @@
                 </li>
                 <!--ログインしていない時-->
                 <% else %>
-                 <%= link_to 'About',   customers_about_path, class: "btn text-light" %>
-            　   <%= link_to '商品一覧',  customers_products_path, class: "btn text-light" %>
+                 <%= link_to 'About',   about_path, class: "btn text-light" %>
+            　   <%= link_to '商品一覧',  products_path, class: "btn text-light" %>
             　    <%= link_to '新規登録',  new_customer_registration_path, class: "btn text-light" %>
                  <%= link_to 'ログイン', new_customer_session_path, class: "btn text-light" %>
 
