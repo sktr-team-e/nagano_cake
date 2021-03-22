@@ -25,7 +25,7 @@ class Customers::CartProductsController < ApplicationController
       end
     end
     @cart_product.save
-    redirect_to customers_cart_products_path
+    redirect_to cart_products_path
   end
 
   def destroy
