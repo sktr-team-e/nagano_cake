@@ -13,10 +13,10 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">LOGO</a>
+        <%= link_to 'LOGO', root_path, class: "btn text-light" %>
          <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
-                
+
             　　<!---会員がログインしている時-->
                 <% if customer_signed_in? %>
               　<%= link_to 'マイページ', customers_path, class: "btn text-light" %>
@@ -50,8 +50,8 @@
             　  <% end %>
             </ul>
         </div>
-    </nav>    
-    
+    </nav>
+
     </header>
     <%= yield %>
   </body>
