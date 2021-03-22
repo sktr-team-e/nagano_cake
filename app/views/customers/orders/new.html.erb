@@ -32,7 +32,7 @@
             <%= f.radio_button :addresses, "addresses" %>
               <span>&nbsp;登録済住所から選択</span><br>
               <!-- order_addressはaddressのモデルでpostcode+address+name -->
-            &emsp;&emsp;<%= f.collection_select(:address_id, @addresses, :id, :order_address) %>
+            &emsp;&emsp;<%= f.collection_select(:address_id, @addresses, :id, :address) %>
           </div>
           <% end %>
 
