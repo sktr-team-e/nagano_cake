@@ -76,7 +76,7 @@ class Customers::OrdersController < ApplicationController
   end
 
   def address_params
-    params.require(:order).permit(:postcode, :address, :name)
+    params.require(:address).permit(:postcode, :address, :name)
   end
 
   def to_log

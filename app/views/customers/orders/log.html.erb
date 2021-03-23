@@ -56,8 +56,8 @@
           </tr>
           <tr>
             <th  class="align-text-top">お届け先</th>
-            <td>〒<%= "#{@order.postcode} #{@order.address}" %><br>
-                <%= "#{@order.name}" %>
+            <td>〒<%= @order.postcode %><%= @order.address %><br>
+                <%= @order.name %>
             </td>
           </tr>
         </table>

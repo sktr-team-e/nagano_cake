@@ -18,14 +18,16 @@ class Customers::CartProductsController < ApplicationController
     @cart_product = CartProduct.new(params_cart_product)
     @cart_product.customer_id = current_customer.id
     @cart_products = current_customer.cart_products.all
+    @cart_product.save
     @cart_products.each do |cart_product|
       if cart_product.product_id == @cart_product.product_id
         new_amount = cart_product.amount + @cart_product.amount
         cart_product.update_attribute(:amount, new_amount)
         @cart_product.delete
       end
-    end
     @cart_product.save
+    end
+
     redirect_to cart_products_path
   end
 
