@@ -18,19 +18,21 @@ class Customers::OrdersController < ApplicationController
       @order.name     = current_customer.last_name + current_customer.first_name
 
       # address(配送先)にaddresses(登録済み住所)の値がはいっていれば
-    elsif params[:order][:addresses_id] == "addresses"
+    elsif params[:order][:addresses] == "addresses"
       address = Address.find(params[:order][:address_id])
-      @order.postcode = postcode
+      @order.postcode = address.postcode
       @order.address  = address.address
       @order.name     = address.name
 
       # address(配送先)にnew_address(新しい住所)の値がはいっていれば
     elsif params[:order][:addresses] == "new_address"
+      #ここにアドレスを新規登録する記述をしたい
       @order.postcode = params[:order][:postcode]
       @order.address  = params[:order][:address]
       @order.name     = params[:order][:name]
-      @address = "1"
     end
+
+    @selected_address = params[:order][:addresses]
   end
 
   def create
@@ -40,8 +42,8 @@ class Customers::OrdersController < ApplicationController
     redirect_to customers_orders_thanx_path
 
    # もし情報入力でnew_addressの場合Addressに保存
-    if params[:order][:address] == "1"
-      current_customer.address.create(address_params)
+    if params[:order][:selected_address] == "new_address"
+      current_customer.addresses.create(address_params)
     end
 
    # カート商品の情報を注文商品に移動(カート機能で保存された商品を一括決済)
@@ -51,7 +53,6 @@ class Customers::OrdersController < ApplicationController
       product:  cart_product.product,
       order:    @order,
       amount:   cart_product.amount,
-      including_tax_price: including_tax_price(cart_product)
     )
     end
 
