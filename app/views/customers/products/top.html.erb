@@ -1,21 +1,28 @@
-<div class="text-center">
-	<div class="example">
-		<%= image_tag 'ケーキ.jpeg' %>
-		<p>
-			ようこそ、ながのCAKEへ!<br>
-			このサイトは、ケーキ販売のECサイトになります。<br>
-			会員でない方も商品の閲覧はできますが、<br>
-			購入には会員登録が必要になります。<br>
-		</p>
+<div class='container px-5 px-sm-0'>
+	<div class="text-center">
+		<div class="example text-center">
+			<%= image_tag 'ケーキ.jpeg' %>
+			<p>
+				ようこそ、ながのCAKEへ!<br>
+				このサイトは、ケーキ販売のECサイトになります。<br>
+				会員でない方も商品の閲覧はできますが、<br>
+				購入には会員登録が必要になります。<br>
+			</p>
+		</div>
 	</div>
-</div>
 
-<h1>新着商品</h1>
-<!-- 新着のケーキ4つ表示させる-->
-<% @products.first(5). each do |product| %>
-<!--ここにrenderを挿入-->
-<% end %>
+	<h2><strong>新着商品</strong></h2>
+	<div class="row">
+		<% @products.first(4).each do |product| %>
+			<div class="col-md-3">
+	  		<%= attachment_image_tag(product, :image, size:"220x140", fallback: "no_image.jpg") %>
+				<h6><strong><%= product.name %></strong></h6>
+				<p><strong>¥<%= product.nontaxed_price.to_i.to_s(:delimited) %></strong></p>
+			</div>
+		<% end %>
+	</div>
 
-<div class="text-right">
-	<%= link_to "全ての商品を見る", products_path, class: "btn-link  pull-right" %>
+	<div class="text-right">
+		<%= link_to "全ての商品を見る", products_path, class: "btn-link  pull-right" %>
+	</div>
 </div>

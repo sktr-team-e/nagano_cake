@@ -21,9 +21,9 @@
               <%= attachment_image_tag(cart.product, :image, size: "100x70", fallback: "no_image.jpg") %>
               <strong><%= cart.product.name %></strong>
               </td>
-              <td><%= %></td> <!--ショッピングカートから引用予定-->
+              <td><%= (cart.product.nontaxed_price * 1.10).floor %></td>
               <td><%= cart.amount %></td>
-              <td><%= %></td> <!--ショッピングカートから引用予定-->
+              <td><%= sum = (cart.product.nontaxed_price * 1.10 * cart.amount).to_i %></td>
             </tr>
             <% end %>
           </tbody>
@@ -33,44 +33,46 @@
       <table class="table table-bordered">
         <tr>
           <th>送料</th>
-          <td></td>
+          <td><%= @order.shipping_cost %></td>
         </tr>
         <tr>
           <th>商品合計</th>
-          <td></td>
+          <td><%=  %></td> <!--要修正-->
         </tr>
         <tr>
           <th>請求金額</th>
-          <td></td>
+          <td><%=  %></td> <!--要修正-->
         </tr>
       </table>
     </div>
   </div>
     <br>
     <div class="row">
-      <table class="table">
-        <tr>
-          <th  class="align-text-top">支払方法</th>
-          <td><%= @order.payment_method %></td>
-        </tr>
-        <tr>
-          <th  class="align-text-top">お届け先</th>
-          <td>〒<%= "#{@order.postcode} #{@order.address}" %><br>
-              <%= "#{@order.name}" %>
-          </td>
-        </tr>
-      </table>
+      <div class="col-md-6">
+        <table class="table">
+          <tr>
+            <th  class="align-text-top">支払方法</th>
+            <td><%= @order.payment_method %></td>
+          </tr>
+          <tr>
+            <th  class="align-text-top">お届け先</th>
+            <td>〒<%= @order.postcode %><%= @order.address %><br>
+                <%= @order.name %>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   <div class="row justify-content-center">
       <!-- 表示とformを分けて記入 -->
       <div class ="col-xs-11">
-      <%= form_with model: @order, url: customers_orders_path, method: :post, local: true do |f| %>
+      <%= form_with model: @order, url:orders_path, method: :post, local: true do |f| %>
         <%= f.hidden_field :postcode %>
         <%= f.hidden_field :address %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :payment_method %>
         <%= f.hidden_field :total_price %>
-        <%= f.hidden_field :address, value: @address %>
+        <%= f.hidden_field :selected_address, value: @selected_address %>
         <br>
         <br>
         <%= f.submit " 注文を確定する ", class: "btn btn-success center-block col-xs-5" %>

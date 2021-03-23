@@ -6,7 +6,7 @@
       <% if current_customer.cart_products.present? %> <!--カート内に商品があれば-->
 <!--支払い方法-->
         <div class="col-xs-offset-1">
-        <%= form_with :model => @order, url:customers_customers_orders_log_path, method: :get, local: true  do |f| %>
+        <%= form_with :model => @order, url:customers_orders_log_path, method: :get, local: true  do |f| %>
            <h3><strong>支払い方法</strong></h3>
              <div class="col-xs-10 radio">
                <%= f.radio_button :payment_method, :"クレジットカード", checked: true %>
@@ -26,37 +26,39 @@
             <br>
             &emsp;&emsp;<%= "#{current_customer.last_name} #{current_customer.first_name}" %>
           </div>
-
-          <% if @addresses != [] %> <!--送り先がログインしていない人の住所にしたい場合-->
+          <br>
+          <% if @addresses != [] %>
           <div class="col-xs-10 radio">
             <%= f.radio_button :addresses, "addresses" %>
               <span>&nbsp;登録済住所から選択</span><br>
-              <!-- order_addressはaddressのモデルでpostcode+address+name -->
-            &emsp;&emsp;<%= f.collection_select(:address_id, @addresses, :id, :address) %>
+              <!--addressモデルから引っ張ってきたい--><!--(↓)選択.rb肢を別のモデルから引っ張ってきたい場合-->
+            &emsp;&emsp;<%= f.collection_select(:address_id, @addresses, :id, :concat_address_info) %>
           </div>
           <% end %>
-
-
-          <div class="new-address col-xs-10 radio">
+          <br>
+          <div class="new-address col-xs-12 radio">
             <%= f.radio_button :addresses, "new_address" %>
             <span>&nbsp;新しいお届け先</span><br>
-            <div class="field form-group col-xs-12">
-              <%= f.label :"郵便番号(ハイフンなし)", class: "col-sm-4 control-label" %>
-              <%= f.text_field :postcode, class: "col-sm-3 form-control-static postal_code" %>
+            <div class="row">
+              <%= f.label :"郵便番号(ハイフンなし)", class: "col-sm-6 control-label" %>
+              <%= f.text_field :postcode, class: "col-sm-6 form-control-static postal_code" %>
             </div>
-            <div class="field form-group col-xs-12">
-              <%= f.label :"住所", class: "col-sm-4 control-label" %>
-              <%= f.text_field :address, class: "col-sm-8 form-control-static address" %>
+            <br>
+            <div class="row">
+              <%= f.label :"住所", class: "col-sm-6 control-label" %>
+              <%= f.text_field :address, class: "col-sm-6 form-control-static address" %>
             </div>
-            <div class="field form-group col-xs-1">
-              <%= f.label :"宛名", class: "col-sm-4 control-label" %>
-              <%= f.text_field :name, class: "col-sm-4 form-control-static" %>
-            </div>
-            <%= f.submit "確認画面へ進む", class: "btn btn-primary col-xs-5" %>
+            <br>
+            <div class="row">
+              <%= f.label :"宛名", class: "col-sm-6 control-label" %>
+              <%= f.text_field :name, class: "col-sm-6 form-control-static" %>
             </div>
           </div>
-
-
+          <br>
+          <br>
+            <div class="row justify-content-center">
+              <%= f.submit "確認画面へ進む", class: "btn btn-primary col-xs-5" %>
+            </div>
         <% end %>
          </div>
       <% else %><!-- if カート内に商品がなければ時 -->

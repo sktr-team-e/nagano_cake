@@ -1,2 +1,36 @@
-<h1>Admins::Customers#edit</h1>
-<p>Find me in app/views/admins/customers/edit.html.erb</p>
+<h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
+
+<%= simple_form_for(@customer, url: admins_customer_path, html: { method: :patch }) do |f| %>
+  <%= f.error_notification %>
+
+    <div class="field">
+      <%= f.label :last_name, "名前　　　　　　　　　　　（姓）　" %><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+      <%= f.label :first_name, "（名）　" %><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+    </div><br>
+
+    <div class="field">
+      <%= f.label :last_name_kana, "フリガナ　　　　　　　　　（セイ）" %><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
+      <%= f.label :first_name_kana, "（メイ）" %><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
+    </div><br>
+
+    <div class="field">
+      <%= f.label :postcode, "郵便番号" %>　　　　　　　　　　　　 <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %>
+    </div><br>
+
+    <div class="field member-address">
+      <%= f.label :address, "住所" %>　　　　　　　　　　　　　　　<%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+    </div><br>
+
+      <div class="field">
+      <%= f.label :phone_number,"電話番号" %>　　　　　　　　　　　<%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+    </div><br>
+
+     <div class="field">
+      <%= f.label :email, "メールアドレス" %>　　　　　　　　　 　 <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div><br>
+
+   <%= button_tag :type => "submit", :class =>"btn btn-success" do %>
+   　変更を保存
+   <% end %>
+
+<% end %>
