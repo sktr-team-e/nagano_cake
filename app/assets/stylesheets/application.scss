@@ -62,3 +62,17 @@
 .including_tax_price {
   font-size: 22px;
 }
+
+// admin側 customer部分
+
+.customer_show{
+  display: flex;
+}
+
+.customer_show_title{
+  width: 200px;
+}
+
+.customer_show_contents{
+  width: 600px;
+}
