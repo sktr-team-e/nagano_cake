@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     resources :cart_products, only: [:index, :update, :create, :destroy]
     resources :products, only: [:index, :show]
     resource :customers, only: [:show, :edit, :update]
-    get '/quit' => 'customers#quit'
-    get 'customers/out' => 'customers#out'
+    get 'customers/quit' => 'customers#quit'
+    patch 'customers/out' => 'customers#out'
   end
 
 
