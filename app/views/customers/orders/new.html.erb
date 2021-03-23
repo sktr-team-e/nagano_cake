@@ -32,7 +32,7 @@
             <%= f.radio_button :addresses, "addresses" %>
               <span>&nbsp;登録済住所から選択</span><br>
               <!--addressモデルから引っ張ってきたい--><!--(↓)選択.rb肢を別のモデルから引っ張ってきたい場合-->
-            &emsp;&emsp;<%= f.collection_select(:address, @addresses, :id, :concat_address_info) %>
+            &emsp;&emsp;<%= f.collection_select(:address_id, @addresses, :id, :concat_address_info) %>
           </div>
           <% end %>
           <br>
