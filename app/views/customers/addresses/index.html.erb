@@ -1,20 +1,25 @@
-<h2>配送先登録 / 一覧</h2>
 <div>
+<h2>配送先登録 / 一覧</h2>
+<div class="container mx-5 my-4 p-0">
   <%= form_with model: @address, url: addresses_path, method: :post, local: true do |f| %>
   <%= f.hidden_field :customer_id, value: @customer.id %>
-    <p>郵便番号（ハイフンなし）</p>
-    <%= f.text_field :postcode %>
-  <br>
-    <p>住所</p>
-    <%= f.text_field :address %>
-  <br>
-    <p>宛名</p>
-    <%= f.text_field :name %>
-    <%= f.submit '新規登録' %>
+  <div class="row my-2">
+    <div class="col-3">郵便番号(ハイフンなし)</div>
+    <div class="col-7"><%= f.text_field :postcode, :placeholder => "0000000" %></div>
+  </div>
+  <div class="row my-2">
+    <div class=col-3>住所</div>
+    <div class=col-7><%= f.text_field :address, :placeholder => "東京都渋谷区代々木神園町0-0", size: 60 %></div>
+  </div>
+  <div class="row my-2">
+    <div class=col-3>宛名</div>
+    <div class=col-5><%= f.text_field :name, :placeholder => "山田太郎" %></div>
+    <div class=col-4><%= f.submit '新規登録', class: "btn btn-success" %></div>
+  </div>
   <% end %>
 </div>
 
-<div>
+<div class="container mx-5 mt-5 p-0">
   <table class='table table-hover table-inverse'>
     <tr>
       <th>郵便番号</th>
@@ -38,4 +43,5 @@
     </tr>
   <% end %>
   </table>
+</div>
 </div>
