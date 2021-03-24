@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :create, :edit, :update]
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
     resources :orders, only: [:index, :show, :update]
-    get 'order_products/update'
+    resources :order_products, only: [:update]
   end
 
 
