@@ -26,12 +26,10 @@ class Customers::OrdersController < ApplicationController
 
       # address(配送先)にnew_address(新しい住所)の値がはいっていれば
     elsif params[:order][:addresses] == "new_address"
-      #ここにアドレスを新規登録する記述をしたい
       @order.postcode = params[:order][:postcode]
       @order.address  = params[:order][:address]
       @order.name     = params[:order][:name]
     end
-
     @selected_address = params[:order][:addresses]
   end
 

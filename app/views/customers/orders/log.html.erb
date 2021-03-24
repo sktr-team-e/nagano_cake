@@ -15,6 +15,7 @@
             </tr>
           </thead>
           <tbody>
+            <% sum = 0 %>
             <% @cart_products.each do |cart| %>
             <tr>
               <td>
@@ -23,7 +24,10 @@
               </td>
               <td><%= (cart.product.nontaxed_price * 1.10).floor %></td>
               <td><%= cart.amount %></td>
-              <td><%= sum = (cart.product.nontaxed_price * 1.10 * cart.amount).to_i %></td>
+              <td>
+                <%= (cart.product.nontaxed_price * 1.10 * cart.amount).to_i %>
+                <% sum += (cart.product.nontaxed_price * 1.10 * cart.amount).to_i %>
+              </td>
             </tr>
             <% end %>
           </tbody>
@@ -37,11 +41,11 @@
         </tr>
         <tr>
           <th>商品合計</th>
-          <td><%=  %></td> <!--要修正-->
+          <td><%= sum.to_s(:delimited) %></td>
         </tr>
         <tr>
           <th>請求金額</th>
-          <td><%=  %></td> <!--要修正-->
+          <td><%= (@order.shipping_cost + sum).to_s(:delimited) %></td>
         </tr>
       </table>
     </div>

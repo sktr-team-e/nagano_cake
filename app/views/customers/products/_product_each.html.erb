@@ -1,10 +1,10 @@
    <%= link_to product_path(product.id), class: "btn-link", :style=>"color:#0999FF;" do %>
-     <%= attachment_image_tag(@product, :image, size: "220x170", fallback: "no_image.jpg") %>
+     <%= attachment_image_tag(product, :image, size: "220x170", fallback: "no_image.jpg") %>
      <h6><%= product.name %></h6>
    <% end %>
 
    <% if product.is_active == true %>
      <p>¥<%= product.nontaxed_price.to_s(:delimited) %></p>
    <% elsif product.is_active == false %>
-     <p class="soldout">売り切れ中</p>
+     <strong class="soldout text-danger">売り切れ中</strong>
    <% end %>
