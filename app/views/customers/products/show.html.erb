@@ -7,7 +7,7 @@
     <div class="customers-show-introduction">
       <p><%= @product.introduction %></p>
     </div>
-    <p class="including_tax_price"><b>￥<%= (@product.nontaxed_price * 1.1).floor %></b>(税込)</p>
+    <p class="including_tax_price"><b>￥<%= (@product.nontaxed_price * 1.1).floor.to_s(:delimited) %></b>(税込)</p>
 
    <%= form_with model: @cart_products, url: cart_products_path, local: true do |f| %>
      <%= f.hidden_field :product_id, value: @product.id %>
