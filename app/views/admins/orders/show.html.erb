@@ -4,7 +4,7 @@
 		<%= flash[:success2] %>
 	</div>
 
-	<h2 style="width: 200px;background-color: #e6e6e6; text-align: center;">注文履歴詳細</h2>
+	<h4 style="width: 150px;background-color: #e6e6e6; text-align: center;">注文履歴詳細</h4>
 		<p><strong>購入者</strong>&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
 			<%= link_to admins_customer_path(@order.customer_id) do %>
 			<%= @order.customer.last_name %> <%= @order.customer.first_name %>
