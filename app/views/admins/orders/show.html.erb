@@ -1,19 +1,21 @@
-<%= flash[:success] %>
-<%= flash[:success2] %>
-
 <div class='container px-5 px-sm-0'>
+	<div class='text-center text-danger'>
+		<%= flash[:success] %>
+		<%= flash[:success2] %>
+	</div>
+
 	<h2 class="head-line title_h2">注文履歴詳細</h2>
-		<p>購入者：<%= link_to admins_customer_path(@customer.id) do%>
-	  		<%= @order.customer.last_name %><%= @order.customer.first_name %>
-	  		<% end %>
+		<p><strong>購入者</strong><%= link_to admins_customer_path(@customer.id) do%>
+			　　　　　<%= @order.customer.last_name %> <%= @order.customer.first_name %>
+	  	<% end %>
 		</p>
-		<p>注文日：<%= @order.created_at %></p>
-		<p>配送先：<%= @order.postcode %><%= @order.address %><br>
-			<%= @order.name %>
+		<p><strong>注文日</strong>　　　　　<%= @order.created_at %></p>
+		<p><strong>配送先</strong>　　　　　〒<%= @order.postcode %>　<%= @order.address %><br>
+			　　　　　　　　<%= @order.name %>
 		</p>
-		<p>支払方法：<%= @order.payment_method %></p>
+		<p><strong>支払方法</strong>　　　　<%= @order.payment_method %></p>
 		<%= form_for(@order, url: admins_order_path, method: :patch) do |f| %>
-			<p>注文ステータス：<%= f.select :status, Order.statuses.keys, class: "status" %>
+			<p><strong>注文ステータス</strong>　<%= f.select :status, Order.statuses.keys, class: "status" %>
 				<%= f.submit '更新'  ,class: "btn btn-success" %>
 			</p>
  		 <% end %>
@@ -30,6 +32,7 @@
 				</tr>
 			</thead>
 			<tbody>
+				<% @sum = 0 %>
 				<% @order_products.each do |order_product| %>
 				<tr>
 					<td class="text-left">
@@ -42,9 +45,11 @@
 						<%= order_product.amount %>
 					</td>
 					<td class="text-right">
-						<%= (order_product.product.nontaxed_price * 1.10 * order_product.amount).floor.to_s(:delimited) %>
+						<% @price = (order_product.product.nontaxed_price * 1.10 * order_product.amount).floor %>
+						<%= @price.to_s(:delimited) %>
+						<% @sum += @price %>
 					</td>
-						<%= form_for(order_product, url: admins_order_path(order_product), method: :patch) do |f| %>
+						<%= form_for(order_product, url: admins_order_product_path(order_product), method: :patch) do |f| %>
 					<td>
 						<%= f.select :making_status, OrderProduct.making_statuses.keys %>
 						<%= f.submit '更新'  ,class: "btn btn-success" %>
@@ -60,7 +65,7 @@
 		<table class="table table-hover table-bordered table-condensed">
 			<tr>
 				<th class="info">商品合計</th>
-				<!--<td>¥金額追加</td>-->
+				<td>¥<%= @sum %></td>
 			</tr>
 			<tr>
 				<th class="info">送料</th>
@@ -68,7 +73,7 @@
 			</tr>
 			<tr>
 				<th class="info">請求金額合計</th>
-					<!--<td>¥商品合計＋送料</td>-->
+				<td>¥<%= (@sum + @order.shipping_cost).to_s(:delimited) %></td>
 			</tr>
 		</table>
 	</div>
