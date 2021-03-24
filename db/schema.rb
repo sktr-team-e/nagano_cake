@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2021_03_23_021044) do
     t.integer "including_tax_price"
     t.integer "making_status"
     t.datetime "created_at", null: false
-    t.datetime "<%= @order.name %>updated_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
