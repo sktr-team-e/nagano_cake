@@ -47,18 +47,26 @@
   width: 50%;
   }
 
+//customer側 product_show
+
 .customers-show-box{
   width: 800px;
-  margin: 0 auto;
+  margin: 60px auto;
   display: flex;
 }
 
 .customers-show-image {
-  width: 300px;
+  width: 250px;
 }
 
 .customers-show-text-box {
+  margin-left: 30px;
   width: 400px;
+}
+
+.customers-show-introduction{
+  margin-top: 10px;
+  height: 90px;
 }
 
 .including_tax_price {
