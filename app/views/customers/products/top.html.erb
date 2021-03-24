@@ -15,8 +15,10 @@
 	<div class="row">
 		<% @products.first(4).each do |product| %>
 			<div class="col-md-3">
-	  		<%= attachment_image_tag(product, :image, size:"220x140", fallback: "no_image.jpg") %>
-				<h6><strong><%= product.name %></strong></h6>
+				<%= link_to product_path(product.id) do %>
+  				<%= attachment_image_tag(product, :image, size:"220x140", fallback: "no_image.jpg") %>
+					<h6><strong><%= product.name %></strong></h6>
+				<% end %>
 				<p><strong>¥<%= product.nontaxed_price.to_i.to_s(:delimited) %></strong></p>
 			</div>
 		<% end %>
