@@ -16,6 +16,9 @@
         <%= link_to 'LOGO', root_path, class: "btn text-light" %>
          <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
+                <% if customer_signed_in? %>
+                  <div class="header-line"><p class="header-name ">ようこそ、<%= current_customer.last_name + " " + current_customer.first_name %>さん！</p></div>
+                <% end %>
 
             　　<!---会員がログインしている時-->
                 <% if customer_signed_in? %>

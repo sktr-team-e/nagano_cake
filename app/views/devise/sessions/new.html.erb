@@ -3,12 +3,12 @@
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-      <%= f.label :email, "メールアドレス" %>  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.label :email, "メールアドレス" %>  <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "sample@example.com", size: 50 %>
     </div><br>
   <div class="field">
       <%= f.label :password, "パスワード" %>
       <% if @minimum_password_length %>
-      <% end %>　　　　　<%= f.password_field :password, autocomplete: "new-password" %>
+      <% end %>　　　　　<%= f.password_field :password, autocomplete: "new-password", size: 50 %>
     </div><br>
  <div class="form-actions">
     <%= f.button :submit, "ログイン", class: "btn btn-primary btn- center-block" %>
