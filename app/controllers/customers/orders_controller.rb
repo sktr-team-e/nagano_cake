@@ -15,7 +15,7 @@ class Customers::OrdersController < ApplicationController
     if params[:order][:addresses] == "residence"
       @order.postcode = current_customer.postcode
       @order.address  = current_customer.address
-      @order.name     = current_customer.last_name + current_customer.first_name
+      @order.name     = current_customer.last_name
 
       # address(配送先)にaddresses(登録済み住所)の値がはいっていれば
     elsif params[:order][:addresses] == "addresses"
