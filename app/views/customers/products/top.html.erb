@@ -13,7 +13,7 @@
 
 	<h2><strong>新着商品</strong></h2>
 	<div class="row">
-		<% @products.first(4).each do |product| %>
+		<% @products.last(4).each do |product| %>
 			<div class="col-md-3">
 				<%= link_to product_path(product.id) do %>
   				<%= attachment_image_tag(product, :image, size:"220x140", fallback: "no_image.jpg") %>
