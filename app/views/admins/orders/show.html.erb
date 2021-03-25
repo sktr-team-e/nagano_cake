@@ -4,18 +4,19 @@
 		<%= flash[:success2] %>
 	</div>
 
-	<h2 class="head-line title_h2">注文履歴詳細</h2>
-		<p><strong>購入者</strong><%= link_to admins_customer_path(@customer.id) do%>
-			　　　　　<%= @order.customer.last_name %> <%= @order.customer.first_name %>
+	<h4 style="width: 150px;background-color: #e6e6e6; text-align: center;">注文履歴詳細</h4>
+		<p><strong>購入者</strong>&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
+			<%= link_to admins_customer_path(@order.customer_id) do %>
+			<%= @order.customer.last_name %> <%= @order.customer.first_name %>
 	  	<% end %>
 		</p>
-		<p><strong>注文日</strong>　　　　　<%= @order.created_at %></p>
-		<p><strong>配送先</strong>　　　　　〒<%= @order.postcode %>　<%= @order.address %><br>
-			　　　　　　　　<%= @order.name %>
+		<p><strong>注文日</strong>&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<%= @order.created_at %></p>
+		<p><strong>配送先</strong>&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;〒<%= @order.postcode %>　<%= @order.address %><br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<%= @order.name %>
 		</p>
-		<p><strong>支払方法</strong>　　　　<%= @order.payment_method %></p>
+		<p><strong>支払方法</strong>&emsp;&emsp;&emsp;&emsp;<%= @order.payment_method %></p>
 		<%= form_for(@order, url: admins_order_path, method: :patch) do |f| %>
-			<p><strong>注文ステータス</strong>　<%= f.select :status, Order.statuses.keys, class: "status" %>
+			<p><strong>注文ステータス</strong>&emsp;<%= f.select :status, Order.statuses.keys, class: "status" %>
 				<%= f.submit '更新'  ,class: "btn btn-success" %>
 			</p>
  		 <% end %>
