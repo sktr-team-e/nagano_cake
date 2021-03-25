@@ -24,7 +24,7 @@
           <% @cart_products.each do |cart_product| %>
           <tr>
             <td>
-              <%= attachment_image_tag(cart_product.product, :image, size:"80x50", fallback: "no_image.jpg") %>
+              <%= attachment_image_tag(cart_product.product, :image, size:"100x70", fallback: "no_image.jpg") %>
               <%= cart_product.product.name %>
             </td>
             <td><%= (cart_product.product.nontaxed_price * 1.10).floor.to_s(:delimited) %></td>
