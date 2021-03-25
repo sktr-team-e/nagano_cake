@@ -5,8 +5,9 @@
 	</div>
 
 	<h2 class="head-line title_h2">注文履歴詳細</h2>
-		<p><strong>購入者</strong><%= link_to admins_customer_path(@customer.id) do%>
-			　　　　　<%= @order.customer.last_name %> <%= @order.customer.first_name %>
+		<p><strong>購入者</strong>
+		  <%= link_to admins_customer_path(@customer.id) do%>
+			　<%= @order.customer.last_name %> <%= @order.customer.first_name %>
 	  	<% end %>
 		</p>
 		<p><strong>注文日</strong>　　　　　<%= @order.created_at %></p>
