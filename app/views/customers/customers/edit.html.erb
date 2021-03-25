@@ -1,36 +1,41 @@
-<h2>会員情報編集</h2>
+<h2>&emsp;&emsp;&emsp;&emsp;&emsp;会員情報編集</h2>
 
 <%= simple_form_for(current_customer, url: customers_path, html: { method: :patch }) do |f| %>
   <%= f.error_notification %>
 
-    <div class="field">
+
+    <div class="container">
+    <div class="justify-content-md-center">
+    <div class="col-8">
       <%= f.label :last_name, "名前　　　　　　　　　　　（姓）　" %><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
       <%= f.label :first_name, "（名）　" %><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
     </div><br>
 
-    <div class="field">
+    <div class="col-8">
       <%= f.label :last_name_kana, "フリガナ　　　　　　　　　（セイ）" %><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
       <%= f.label :first_name_kana, "（メイ）" %><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
     </div><br>
 
-    <div class="field">
-      <%= f.label :postcode, "郵便番号" %>　　　　　　　　　　　　 <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %>
+    <div class="col-8">
+      <%= f.label :postcode, "郵便番号" %>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %>
     </div><br>
 
-    <div class="field member-address">
-      <%= f.label :address, "住所" %>　　　　　　　　　　　　　　　<%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+    <div class="col-8">
+      <%= f.label :address, "住所" %>　　　　　　　　　　　　　　　<%= f.text_field :address, autofocus: true, autocomplete: "address", size: 50  %>
     </div><br>
 
-      <div class="field">
-      <%= f.label :phone_number,"電話番号" %>　　　　　　　　　　　<%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+    <div class="col-8">
+      <%= f.label :phone_number,"電話番号" %>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
     </div><br>
 
-     <div class="field">
-      <%= f.label :email, "メールアドレス" %>　　　　　　　　　 　 <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="col-8">
+      <%= f.label :email, "メールアドレス" %>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div><br>
-    
-   <%= button_tag :type => "submit", :class =>"btn btn-success" do %>
+  
+  
+  <%= button_tag :type => "submit", :class =>"btn btn-success" do %>
    　編集内容を保存する
-   <% end %>
-    <%= link_to "退会する", customers_quit_path, class: "btn-danger" %>
-    <% end %>
+  <% end %>
+  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+  <%= link_to "退会する", customers_quit_path, class: "btn btn-danger" %>
+  <% end %>

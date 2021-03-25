@@ -28,6 +28,16 @@
      <div class="field">
       <%= f.label :email, "メールアドレス" %>　　　　　　　　　 　 <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div><br>
+    <div class= "field">
+    <%= f.label "会員ステータス" %>
+    
+        <td>
+          <%= f.label "有効", for: "customer_is_deleted"  %>
+          <%= f.radio_button :is_deleted, :out, :checked => (@customer.is_deleted == "quit") %>
+          <%= f.label "無効", for: "customer_is_deleted" %>
+          <%= f.radio_button :is_deleted, :quit, :checked => (@customer.is_deleted == "out")  %>
+        </td>
+    </div>
 
    <%= button_tag :type => "submit", :class =>"btn btn-success" do %>
    　変更を保存
