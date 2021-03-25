@@ -10,7 +10,6 @@ class Customer < ApplicationRecord
 
   has_many :cart_products, dependent: :destroy
   
-  enum is_deleted: { quit: false, out: true}
 
   def active_for_authentication?  
     super && !is_deleted 

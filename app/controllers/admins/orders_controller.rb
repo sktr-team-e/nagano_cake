@@ -9,7 +9,6 @@ class Admins::OrdersController < ApplicationController
 	def show
 		@order = Order.find(params[:id])
 		@order_products = @order.order_products
-		@customer = Customer.find(params[:id])
 	end
 
 	def update
@@ -17,7 +16,7 @@ class Admins::OrdersController < ApplicationController
 		@order_product = OrderProduct.find(params[:id])
 		@order.update(order_params)
 		flash[:success] = "注文ステータスを変更しました"
-		redirect_to admins_order_path(@order_product.order)
+		redirect_to admins_order_path(@order.id)
 	end
 
 	private
