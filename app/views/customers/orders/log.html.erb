@@ -44,7 +44,7 @@
           <td><%= sum.to_s(:delimited) %></td>
         </tr>
         <tr>
-          <th>請求金額</th>　<!--total_priceとしてデータを保存したい　モデルに記述してコントローラで呼び出す？-->
+          <th>請求金額</th>
           <td><%= (@order.shipping_cost + sum).to_s(:delimited) %></td>
         </tr>
       </table>
@@ -53,7 +53,7 @@
     <br>
     <div class="row">
       <div class="col-md-6">
-        <table class="table">
+        <table class="table table-borderless">
           <tr>
             <th  class="align-text-top">支払方法</th>
             <td><%= @order.payment_method %></td>
