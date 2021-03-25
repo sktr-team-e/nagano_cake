@@ -1,21 +1,59 @@
-<div class="show-box">
 
 <h2>商品詳細 -Admin-</h2>
 
-<div class="show-image">
+<div class="admin_show_box">
   <%= attachment_image_tag(@product, :image, size: "220x170", fallback: "no_image.jpg") %>
-</div>
-
-<div class="show-text">
-  <h4><%= @product.name %></h4>
-  <p><%= @product.introduction %></p>
-  <p><b>￥<%= @product.nontaxed_price %></b>(税込)</p>
-
-</div>
-
-  <div>
-    <%= link_to edit_admins_product_path(params[:id]) do %>
-      <button type="button" class="btn btn-success">編集する</button>
-    <% end %>
+  <div class="container ml-4">
+    <div class="row">
+      <div class="col-2">
+        <p>商品名</p>
+      </div>
+      <div class="col-5">
+        <p><%= @product.name %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <p>商品説明</p>
+      </div>
+      <div class="col-5">
+        <p><%= @product.introduction %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <p>ジャンル</p>
+      </div>
+      <div class="col-5">
+        <p><%= @product.introduction %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <p>税込価格&emsp;&nbsp;(税抜き価格)</p>
+      </div>
+      <div class="col-5">
+         <p><%= (@product.nontaxed_price * 1.1).floor.to_s(:delimited) %>（<%= @product.nontaxed_price.to_s(:delimited) %>）円</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <p>ステータス</p>
+      </div>
+      <div class="col-5">
+        <% if @product.is_active == true %>
+          <p>販売中</p>
+        <% else %>
+          <p>販売停止中</p>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <%= link_to edit_admins_product_path(params[:id]) do %>
+          <button type="button" class="btn btn-success">編集する</button>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

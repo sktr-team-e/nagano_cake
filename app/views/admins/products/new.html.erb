@@ -3,26 +3,68 @@
 </div>
 
 <%= form_with model: @product, url:'/admins/products', local:true do |f| %>
-
-  <%= f.label :"商品画像" %>
-  <%= f.attachment_field :image %>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <%= f.label :"商品画像" %>
+    </div>
+    <div class="col-5">
+      <%= f.attachment_field :image %>
+    </div>
+  </div>
 <br>
-  <%= f.label :"商品名" %>
-  <%= f.text_field :name %>
+  <div class="row">
+    <div class="col-2">
+      <%= f.label :"商品名" %>
+    </div>
+    <div class="col-5">
+      <%= f.text_field :name, placeholder: "商品名" %>
+    </div>
+  </div>
 <br>
-  <%= f.label :"商品説明" %>
-  <%= f.text_area :introduction %>
+  <div class="row">
+    <div class="col-2">
+      <%= f.label :"商品説明" %>
+    </div>
+    <div class="col-5">
+      <%= f.text_area :introduction, placeholder: "ここに説明文を記述します" %>
+    </div>
+  </div>
 <br>
-  <%= f.label :"ジャンル" %>
-  <%= f.text_field :category_id %>
+  <div class="row">
+    <div class="col-2">
+      <%= f.label :"ジャンル" %>
+    </div>
+    <div class="col-5">
+      <%= f.text_field :category_id %>
+    </div>
+  </div>
 <br>
-  <%= f.label :"税抜価格" %>
-  <%= f.text_field :nontaxed_price %>
+  <div class="row">
+    <div class="col-2">
+      <%= f.label :"税抜価格" %>
+    </div>
+    <div class="col-5">
+      <%= f.text_field :nontaxed_price, placeholder: "1000" %>
+    </div>
+  </div>
 <br>
-  <%= f.label :"販売ステータス" %>
-  <%= f.check_box :is_active %>
+  <div class="row">
+    <div class="col-2">
+      <%= f.label :"販売ステータス" %>
+    </div>
+    <div class="col-5">
+      <%= f.radio_button :is_active, :true, checked: true %>
+      <span>販売中</span>
+      &nbsp;&nbsp;
+      <%= f.radio_button :is_active, :false%>
+      <span>販売停止中</span>
+    </div>
+  </div>
 <br>
-  <%= f.submit '新規登録' %>
-
-
+  <div class="admin_product_new">
+    <%= f.submit '新規登録' %>
+  </div>
+</div>
 <% end %>
+</div>
