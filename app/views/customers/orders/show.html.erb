@@ -3,9 +3,9 @@
     <h3 style="width: 300px;background-color: #e6e6e6; text-align: center;">注文履歴詳細</h3>
   </div>
     <br>
-    <div class="row">
-      <div class="col-xs-8">
-        <% if @order.present? %>
+    <div class="d-flex row">
+      <% if @order.present? %>
+      <div class="col-md-8">
         <caption><strong>注文情報</strong></caption>
         <table class="table table-bordered">
           <tbody>
@@ -27,14 +27,15 @@
             </tr>
             <tr>
               <th style="background-color: #e6e6e6">ステータス</th>
-              <td></td>
+              <td><%= @order.status %></td>
             </tr>
           </tbody>
-        </tatle>
+        </table>
       </div>
-      <div class="col-xs-4">
+      <div class="col-md-4">
         <caption><strong>請求情報</strong></caption>
         <table class="table table-bordered">
+          <tbody>
           <tr>
             <th style="background-color: #e6e6e6">商品合計</th>
             <td>
@@ -59,11 +60,13 @@
       		    <%= @sum.to_s(:delimited) %>
             </td>
           </tr>
+          </tbody>
         </table>
       </div>
     </div>
     <div class="row">
       <div class="col-md-10">
+        <br>
         <strong>注文内容</strong>
         <table class="table table-bordered">
           <thead style="background-color: #e6e6e6">
