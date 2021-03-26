@@ -5,12 +5,13 @@ class Admins::ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @categories = Category.all
   end
 
   def create
     @product = Product.new(product_params)
     @product.save!
-    redirect_to admins_products_path
+    redirect_to admins_product_path(@product)
   end
 
   def show
@@ -19,6 +20,7 @@ class Admins::ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @categories = Category.all
   end
 
   def update

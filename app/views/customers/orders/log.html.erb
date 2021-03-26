@@ -25,7 +25,7 @@
               <td><%= (cart.product.nontaxed_price * 1.10).floor %></td>
               <td><%= cart.amount %></td>
               <td>
-                <%= (cart.product.nontaxed_price * 1.10 * cart.amount).to_i %>
+                <%= (cart.product.nontaxed_price * 1.10 * cart.amount).floor.to_s(:delimited) %>
                 <% sum += (cart.product.nontaxed_price * 1.10 * cart.amount).to_i %>
               </td>
             </tr>
