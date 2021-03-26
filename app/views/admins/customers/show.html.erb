@@ -1,49 +1,82 @@
-<h1><%= @customer.last_name %><%= @customer.first_name %>の会員詳細</h1>
-
-<div class="customer_show">
-
-  <div class="customer_show_title">
-    <p>会員ID</p>
-    <br>
-    <p>氏名</p>
-    <br>
-    <p>フリガナ</p>
-    <br>
-    <p>郵便番号</p>
-    <br>
-    <p>住所</p>
-    <br>
-    <p>電話番号</p>
-    <br>
-    <p>メールアドレス</p>
-    <br>
-    <p>会員ステータス</p>
+<div class="container">
+  <div class="row mb-3">
+    <h1><%= @customer.last_name %><%= @customer.first_name %>の会員詳細</h1>
   </div>
 
-  <div class="customer_show_contents">
+  <div class="row mt-4">
+    <div class="col-2">
+      <p>会員ID</p>
+    </div>
     <%= @customer.id %>
-    <br>
-    <%= @customer.last_name %><p> </p><%= @customer.first_name %>
-    <br>
-    <%= @customer.last_name_kana %><p> </p><%= @customer.first_name_kana %>
-    <br>
-    <%= @customer.postcode %>
-    <br>
-    <%= @customer.email %>
-    <br>
-  <% if @customer.is_deleted == true %>
-    <p>退会</p>
-  <% else %>
-    <p>有効</p>
-  <% end %>
   </div>
-</div>
-  <div class="customer_show_link">
-    <%= link_to edit_admins_customer_path(@customer.id) do %>
-      <button type="button" class="btn btn-success">編集する</button>
-    <% end %>
-    <%= link_to admins_orders_path do %>
-      <button type="button" class="btn btn-primary">注文履歴一覧を見る</button>
+
+  <div class="row">
+    <div class="col-2">
+      <p>氏名</p>
+    </div>
+    <%= @customer.last_name %><p> </p><%= @customer.first_name %>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <p>フリガナ</p>
+    </div>
+    <%= @customer.last_name_kana %><p> </p><%= @customer.first_name_kana %>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <p>郵便番号</p>
+    </div>
+    <%= @customer.postcode %>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <p>住所</p>
+    </div>
+    <%= @customer.address %>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <p>電話番号</p>
+    </div>
+    <%= @customer.phone_number %>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <p>メールアドレス</p>
+    </div>
+    <%= @customer.email %>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <p>会員ステータス</p>
+    </div>
+    <% if @customer.is_deleted == true %>
+      <p>退会</p>
+    <% else %>
+      <p>有効</p>
     <% end %>
   </div>
 
+  <div class="row">
+    <div class="col-2">
+
+    </div>
+    <div class="col-2 px-0">
+      <%= link_to edit_admins_customer_path(@customer.id) do %>
+        <button type="button" class="btn btn-success">編集する</button>
+      <% end %>
+    </div>
+    <div class="col-4 px-0">
+      <%= link_to admins_orders_path do %>
+        <button type="button" class="btn btn-primary">注文履歴一覧を見る</button>
+      <% end %>
+    </div>
+  </div>
+
+</div>
