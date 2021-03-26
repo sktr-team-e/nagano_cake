@@ -25,12 +25,12 @@
         <p>ジャンル</p>
       </div>
       <div class="col-5">
-        <p><%= @product.introduction %></p>
+        <p><%= @product.category.name %></p>
       </div>
     </div>
     <div class="row">
       <div class="col-2">
-        <p>税込価格&emsp;&nbsp;(税抜き価格)</p>
+        <p>税込価格(税抜価格)</p>
       </div>
       <div class="col-5">
          <p><%= (@product.nontaxed_price * 1.1).floor.to_s(:delimited) %>（<%= @product.nontaxed_price.to_s(:delimited) %>）円</p>

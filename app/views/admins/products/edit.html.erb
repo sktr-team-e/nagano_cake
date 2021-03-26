@@ -36,7 +36,7 @@
       <%= f.label :"ジャンル" %>
     </div>
     <div class="col-5">
-      <%= f.text_field :category_id %>
+      <%= f.collection_select(:category_id, @categories, :id, :name) %>
     </div>
   </div>
 <br>
