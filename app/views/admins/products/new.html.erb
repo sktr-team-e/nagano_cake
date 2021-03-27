@@ -1,9 +1,7 @@
-<div>
-  <p>商品新規登録</p>
-</div>
+<div class="container">
+  <h4 style="width: 240px;background-color: #e6e6e6; text-align: center;">商品一覧</h4>
 
 <%= form_with model: @product, url:'/admins/products', local:true do |f| %>
-<div class="container">
   <div class="row">
     <div class="col-2">
       <%= f.label :"商品画像" %>
@@ -27,7 +25,7 @@
       <%= f.label :"商品説明" %>
     </div>
     <div class="col-5">
-      <%= f.text_area :introduction, placeholder: "ここに説明文を記述します" %>
+      <%= f.text_area :introduction, placeholder: "ここに説明文を記述します", size: "40x10" %>
     </div>
   </div>
 <br>
