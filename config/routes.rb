@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
   devise_for :models
 
-  namespace :customers do
+  scope module: :customers do
     root 'products#top'
     get '/about' => 'products#about'
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :orders, only: [:new, :index, :show, :create]
     get 'customers/orders/log' => 'orders#log'
-    get 'orders/thanx' => 'orders#thanx'
+    get 'customers/orders/thanx' => 'orders#thanx'
+    delete 'cart_products/all_destroy' => 'cart_products#all_destroy'
     resources :cart_products, only: [:index, :update, :create, :destroy]
-    get 'cart_products/all_destroy' => 'cart_products#all_destroy'
     resources :products, only: [:index, :show]
-    resources :customers, only: [:show, :edit, :update]
+    resource :customers, only: [:show, :edit, :update]
     get 'customers/quit' => 'customers#quit'
-    get 'customers/out' => 'customers#out'
+    patch 'customers/out' => 'customers#out'
   end
 
 
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :create, :edit, :update]
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
     resources :orders, only: [:index, :show, :update]
-    get 'order_products/update'
+    resources :order_products, only: [:update]
   end
 
 

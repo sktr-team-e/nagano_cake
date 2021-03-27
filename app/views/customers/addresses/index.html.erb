@@ -1,2 +1,47 @@
-<h1>Customers::Addresses#index</h1>
-<p>Find me in app/views/customers/addresses/index.html.erb</p>
+<div>
+<h4 style="width: 240px;background-color: #e6e6e6; text-align: center;">配送先一覧</h4>
+<div class="container mx-5 my-4 p-0">
+  <%= form_with model: @address, url: addresses_path, method: :post, local: true do |f| %>
+  <%= f.hidden_field :customer_id, value: @customer.id %>
+  <div class="row my-2">
+    <div class="col-3">郵便番号(ハイフンなし)</div>
+    <div class="col-7"><%= f.text_field :postcode, :placeholder => "0000000" %></div>
+  </div>
+  <div class="row my-2">
+    <div class=col-3>住所</div>
+    <div class=col-7><%= f.text_field :address, :placeholder => "東京都渋谷区代々木神園町0-0", size: 60 %></div>
+  </div>
+  <div class="row my-2">
+    <div class=col-3>宛名</div>
+    <div class=col-5><%= f.text_field :name, :placeholder => "山田太郎" %></div>
+    <div class=col-4><%= f.submit '新規登録', class: "btn btn-success" %></div>
+  </div>
+  <% end %>
+</div>
+
+<div class="container mx-5 mt-5 p-0">
+  <table class='table table-hover table-inverse'>
+    <tr>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+      <th></th>
+    </tr>
+  <% @addresses.each do |address| %>
+    <tr>
+      <td><%= address.postcode %></td>
+      <td><%= address.address %></td>
+      <td><%= address.name %></td>
+      <td>
+        <%= link_to edit_address_path(address.id) do %>
+          <button type="button" class="btn btn-success">編集する</button>
+        <% end %>
+        <%= link_to address_path(address.id), method: :delete do %>
+          <button type="button" class="btn btn-danger">削除する</button>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+</div>

@@ -14,3 +14,103 @@
  *= require_self
  */
 @import "bootstrap";
+
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+.bgimage{
+  opacity: 0.5;
+  filter: blur(1px);
+}
+
+.about {
+  text-align: center;
+}
+
+.example {
+  position: relative;
+  }
+
+.example p {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  // -ms-transform: translate(-50%,-50%);
+  // -webkit-transform: translate(-50%,-50%);
+  // transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  /*文字の装飾は省略*/
+  }
+
+.example img {
+  width: 50%;
+  }
+
+.title{
+  width: 80%;
+  margin: 30px auto;
+}
+
+//customer側 product_show
+
+.customers-show-box{
+  width: 800px;
+  margin: 60px auto;
+  display: flex;
+}
+
+.customers-show-image {
+  width: 250px;
+}
+
+.customers-show-text-box {
+  margin-left: 30px;
+  width: 400px;
+}
+
+.customers-show-introduction{
+  margin-top: 10px;
+  height: 90px;
+}
+
+.including_tax_price {
+  font-size: 22px;
+}
+
+// admin側 customer部分
+
+.customer_show{
+  display: flex;
+}
+
+.customer_show_title{
+  width: 200px;
+}
+
+.customer_show_contents{
+  width: 600px;
+}
+
+// admin product new
+.admin_product_new{
+  width: 70%;
+  margin: 0 auto;
+}
+
+// admin product show
+.admin_show_box{
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.admin_show_editbutton{
+  width: 100px;
+  margin: 0 auto;
+}

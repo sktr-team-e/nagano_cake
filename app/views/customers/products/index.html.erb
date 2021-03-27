@@ -1,2 +1,22 @@
-<h1>Customers::Products#index</h1>
-<p>Find me in app/views/customers/products/index.html.erb</p>
+<div class="container"><br>
+  <div class="row">
+     <h4 style="width: 240px;background-color: #e6e6e6; text-align: center;">商品一覧</h4>
+      <div class="d-flex align-self-end">
+        <h4>（全<%= @products.total_count %>件）</h4>
+      </div>
+  </div>
+  <div class="row">
+      <% @products.each do |product| %>
+        <div class="col-md-3">
+  　　　  　　<!--部分テンプレート始まり-->
+          <%= render "product_each", product: product %>
+          <!--部分テンプレート終わり-->
+        </div>
+      <% end %>
+  </div>
+  <br>
+  <br>
+  <div class="pagination justify-content-center">
+    <%= paginate @products %>
+  </div>
+</div>
