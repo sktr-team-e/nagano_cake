@@ -1,15 +1,25 @@
-<h4 style="width: 180px;background-color: #e6e6e6; text-align: center;">管理者ログイン</h4>
+<div class="container">
+  <h4 style="width: 180px;background-color: #e6e6e6; text-align: center;">管理者ログイン</h4>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-      <%= f.label :email, "メールアドレス" %>  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="row my-4 mx-4">
+      <div class="col-2">
+        <%= f.label :email, "メールアドレス" %>
+      </div>
+      <div class="col-7">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+    </div>
+    <div class="row mx-4">
+      <div class="col-2">
+        <%= f.label :password, "パスワード" %>
+      </div>
+      <div class="col-7">
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
     </div><br>
-  <div class="field">
-      <%= f.label :password, "パスワード" %>
-      <% if @minimum_password_length %>
-      <% end %>　　　　　<%= f.password_field :password, autocomplete: "new-password" %>
-    </div><br>
- <div class="form-actions">
-    <%= f.button :submit, "ログイン", class: "btn btn-primary btn- center-block" %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, "ログイン", class: "btn btn-primary btn- center-block" %>
+    </div>
+  <% end %>
+</div>

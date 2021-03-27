@@ -13,11 +13,11 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <%= link_to 'LOGO', root_path, class: "btn text-light" %>
+        <%= link_to 'ながのCAKE', root_path, class: "btn text-light" %>
          <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
                 <% if customer_signed_in? %>
-                  <div class="header-line"><p class="header-name ">ようこそ、<%= current_customer.last_name + " " + current_customer.first_name %>さん！</p></div>
+                  <div class="header-line"><p class="header-name text-light">ようこそ、<%= current_customer.last_name + " " + current_customer.first_name %>さん！</p></div>
                 <% end %>
 
             　　<!---会員がログインしている時-->

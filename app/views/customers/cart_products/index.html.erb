@@ -27,10 +27,10 @@
               <%= attachment_image_tag(cart_product.product, :image, size:"100x70", fallback: "no_image.jpg") %>
               <%= cart_product.product.name %>
             </td>
-            <td><%= (cart_product.product.nontaxed_price * 1.10).floor.to_s(:delimited) %></td>
+            <td>￥<%= (cart_product.product.nontaxed_price * 1.10).floor.to_s(:delimited) %></td>
             <td>
               <%= form_with model: cart_product, url: cart_product_path(cart_product.id), local: true do |f| %>
-                <%= f.number_field :amount,:value => cart_product.amount, min:1,max:5 %>
+                <%= f.number_field :amount,:value => cart_product.amount, min:1,max:10 %>個
                 <%= f.submit "変更", data: {confirm: '個数を変更してよろしいですか？'}, class: "glyphicon glyphicon-pencil btn btn-success" %>
               <% end %>
             </td>
