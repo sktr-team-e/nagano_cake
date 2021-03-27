@@ -22,10 +22,10 @@
               <%= attachment_image_tag(cart.product, :image, size: "100x70", fallback: "no_image.jpg") %>
               <strong><%= cart.product.name %></strong>
               </td>
-              <td><%= (cart.product.nontaxed_price * 1.10).floor %></td>
-              <td><%= cart.amount %></td>
+              <td>￥<%= (cart.product.nontaxed_price * 1.10).floor %></td>
+              <td><%= cart.amount %>個</td>
               <td>
-                <%= (cart.product.nontaxed_price * 1.10 * cart.amount).floor.to_s(:delimited) %>
+                ￥<%= (cart.product.nontaxed_price * 1.10 * cart.amount).floor.to_s(:delimited) %>
                 <% sum += (cart.product.nontaxed_price * 1.10 * cart.amount).to_i %>
               </td>
             </tr>
@@ -37,15 +37,15 @@
       <table class="table table-bordered">
         <tr>
           <th>送料</th>
-          <td><%= @order.shipping_cost %></td>
+          <td>￥<%= @order.shipping_cost %></td>
         </tr>
         <tr>
           <th>商品合計</th>
-          <td><%= sum.to_s(:delimited) %></td>
+          <td>￥<%= sum.to_s(:delimited) %></td>
         </tr>
         <tr>
           <th>請求金額</th>
-          <td><%= (@order.shipping_cost + sum).to_s(:delimited) %></td>
+          <td>￥<%= (@order.shipping_cost + sum).to_s(:delimited) %></td>
         </tr>
       </table>
     </div>

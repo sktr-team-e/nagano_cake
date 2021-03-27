@@ -33,7 +33,7 @@
     		        <% @price = (order_product.product.nontaxed_price * 1.10 * order_product.amount).floor %>
 						    <% @sum += @price %>
     		      <% end %>
-    		      <%= @sum.to_s(:delimited) %>円
+    		      ￥<%= @sum.to_s(:delimited) %>
             </td>
             <td>
               <%= order.status %>
