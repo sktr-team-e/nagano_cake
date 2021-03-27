@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row my-4">
     <div class="col-8">
-      <h1>商品一覧</h1>
+      <h4 style="width: 240px;background-color: #e6e6e6; text-align: center;">商品一覧</h4>
     </div>
     <div class="col-4">
       <%= link_to '商品新規登録', new_admins_product_path, class: "btn btn-success" %>
@@ -26,7 +26,7 @@
         <td><%= product.id %></td>
         <td>
           <%= link_to admins_product_path(product.id) do %>
-            <%= product.name %>編集用
+            <%= product.name %>
           <% end %>
         </td>
         <td><%= product.nontaxed_price.to_s(:delimited) %></td>
